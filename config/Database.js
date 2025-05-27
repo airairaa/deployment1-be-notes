@@ -1,11 +1,16 @@
 import { Sequelize } from "sequelize";
 
+// Supabase PostgreSQL connection string
+const DB_URL = "postgresql://postgres.ukeljmnyhmndfijinjlj:abcdefghijk@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres";
 
-const sequelize = new Sequelize('tugas2', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 3306,
-  logging: false, // optional, untuk mematikan log query
+const db = new Sequelize(DB_URL, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
-export default sequelize;
+export default db;

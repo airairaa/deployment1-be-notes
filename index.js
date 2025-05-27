@@ -3,6 +3,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import AuthRoute from "./routes/AuthRoute.js";
 import NotesRoute from "./routes/NotesRoute.js";
+import sequelize from './config/Database.js';
+
+sequelize.authenticate()
+  .then(() => console.log('✅ Connected to Supabase PostgreSQL successfully.'))
+  .catch(err => console.error('❌ Connection error:', err));
+
+
 
 dotenv.config();
 
